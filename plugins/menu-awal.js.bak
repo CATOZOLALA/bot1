@@ -1,0 +1,30 @@
+import fs from 'fs'
+let handler = async (m, { conn, args, command }) => {
+let totalf = Object.values(global.plugins).filter(
+    (v) => v.help && v.tags
+  ).length;
+ await conn.sendHydrated(m.chat, `
+*Halo Kak ${usrs.registered ? usrs.name : conn.getName(m.sender)} bagaimana kabarmu?*
+
+*Nama: ${usrs.registered ? usrs.name : conn.getName(m.sender)}*
+*Nomor:* @${m.sender.split`@`[0]}
+*Status: ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}*
+*Pengguna: ${usrs.premiumTime > 1 ? 'Yes': 'No'}*
+*Role: ${usrs.role}*
+*Limit: ${usrs.limit}*
+*Uang* : ${money}
+*Type: Nodejs*
+*Baileys: Multi Device*
+
+*Waktu* ${moment.tz('Asia/Jakarta').format('HH')} H${moment.tz('Asia/Jakarta').format('mm')} M${moment.tz('Asia/Jakarta').format('ss')} S
+  `.trim(), wm, giflogo, 'https://chat.whatsapp.com/JytIVwVnOCIFQBA93eZEXu', 'My Group', null, null, [, 'https://chat.whatsapp.com/JytIVwVnOCIFQBA93eZEXu', 'My Group', null, null, [
+    ['SIMPLE', `.tesm`],
+    ['ALL', `.?all`],
+    ['SEWA', `.sewa`]
+  ], m)
+}
+handler.help = ['menu']
+handler.tags = ['menu']
+handler.command = /^testing?$/i
+
+export default handler
